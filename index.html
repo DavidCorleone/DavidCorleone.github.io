@@ -170,7 +170,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-09-07 01:08:05 / Modified: 22:13:08" itemprop="dateCreated datePublished" datetime="2021-09-07T01:08:05+08:00">2021-09-07</time>
+              <time title="Created: 2021-09-07 01:08:05 / Modified: 23:21:31" itemprop="dateCreated datePublished" datetime="2021-09-07T01:08:05+08:00">2021-09-07</time>
             </span>
 
           
@@ -184,19 +184,32 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="这是一个一级标题"><a href="#这是一个一级标题" class="headerlink" title="这是一个一级标题"></a>这是一个一级标题</h1><h2 id="这是一个二级标题"><a href="#这是一个二级标题" class="headerlink" title="这是一个二级标题"></a>这是一个二级标题</h2><h3 id="这是一个三级标题"><a href="#这是一个三级标题" class="headerlink" title="这是一个三级标题"></a>这是一个三级标题</h3><h1 id="这也是一个一级标题"><a href="#这也是一个一级标题" class="headerlink" title="这也是一个一级标题"></a>这也是一个一级标题</h1><h2 id="这也是一个二级标题"><a href="#这也是一个二级标题" class="headerlink" title="这也是一个二级标题"></a>这也是一个二级标题</h2><p>创建段落时，需要用空白行去进行间隔</p>
-<p>比如说这样</p>
-<p>除非段落在列表中，否则不要使用空格和制表符进行缩进</p>
-<p>在一行的末尾，添加两个或以上的空格<br>可以进行换行<br>比如说这样<br>或者是这样<br><br>example</p>
-<p><strong>表示强调</strong>  <strong>同样的作用</strong></p>
-<p><em><strong>表示粗斜体</strong></em> <em><strong>同样的作用</strong></em></p>
-<p><em>表示斜体</em> <em>尽量使用*号而不是_号</em></p>
-<blockquote>
-<p>表示含有多个块的引用</p>
-<blockquote>
-<p>嵌套块引用 <em><strong>在块引用中，某些md元素仍然可以使用</strong></em></p>
-</blockquote>
-</blockquote>
+          <h1 id="安装pyenv时遇到的问题"><a href="#安装pyenv时遇到的问题" class="headerlink" title="安装pyenv时遇到的问题"></a>安装pyenv时遇到的问题</h1><p>在使用 <code>pyenv install 3.8.10</code> 安装虚拟环境时，发现ubuntu 20.04的某些依赖包的版本过高导致安装冲突，在网上搜寻很久，尝试了以下两种方法：</p>
+<ol>
+<li>删除某些版本过高而冲突的包，使用<code>sudo apt-get install -f</code>修复依赖</li>
+<li>使用<code>sudo aptitude install -f</code>，即使用aptitude替代apt。</li>
+</ol>
+<p>但是以上尝试都无法解决这个问题，正确的解决办法：</p>
+<ol>
+<li>首先需要<strong>备份源</strong></li>
+<li>手动更换(不可以在gnome界面里更换)，复制阿里源到 <code>source.list</code></li>
+</ol>
+<p>源代码如下：<br>    deb <a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/ubuntu/">http://mirrors.aliyun.com/ubuntu/</a> focal main restricted universe multiverse<br>    deb-src <a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/ubuntu/">http://mirrors.aliyun.com/ubuntu/</a> focal main restricted universe multiverse</p>
+<pre><code>deb http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse
+
+deb http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse
+
+deb http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse
+
+deb http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse
+</code></pre>
+<ol start="3">
+<li>sudo apt-get update &amp;&amp; sudo apt-get upgrade</li>
+</ol>
 
       
     </div>
